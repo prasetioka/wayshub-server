@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	"net/http"
@@ -35,8 +35,8 @@ func main() {
 	var AllowedMethods = handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS", "PATCH", "DELETE"})
 	var AllowedOrigins = handlers.AllowedOrigins([]string{"*"})
 
-	var port = "5000"
-	fmt.Println("server running localhost:" + port)
+	// var port = "5000"
+	// fmt.Println("server running localhost:" + port)
 
-	http.ListenAndServe("localhost:"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
+	http.ListenAndServe(":", handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
