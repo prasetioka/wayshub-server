@@ -2,13 +2,15 @@ package main
 
 import (
 	// "fmt"
-	"github.com/gorilla/mux"
-	"github.com/joho/godotenv"
 	"net/http"
+	"os"
 	"wayshub-server/database"
 	"wayshub-server/pkg/mysql"
 	"wayshub-server/routes"
+
 	"github.com/gorilla/handlers"
+	"github.com/gorilla/mux"
+	"github.com/joho/godotenv"
 )
 
 func main() {
@@ -37,6 +39,7 @@ func main() {
 
 	// var port = "5000"
 	// fmt.Println("server running localhost:" + port)
+	var port = os.Getenv("PORT")
 
-	http.ListenAndServe(":", handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
+	http.ListenAndServe(":"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
