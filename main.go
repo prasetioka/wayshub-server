@@ -3,6 +3,7 @@ package main
 import (
 	// "fmt"
 	"net/http"
+
 	"os"
 	"wayshub-server/database"
 	"wayshub-server/pkg/mysql"
@@ -39,7 +40,8 @@ func main() {
 
 	// var port = "5000"
 	// fmt.Println("server running localhost:" + port)
-	var port = os.Getenv("PORT")
+	// http.ListenAndServe("localhost:"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 
+	var port = os.Getenv("PORT")
 	http.ListenAndServe(":"+port, handlers.CORS(AllowedHeaders, AllowedMethods, AllowedOrigins)(r))
 }
